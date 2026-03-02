@@ -24,7 +24,7 @@ public class EmployeeDao extends GenericCrudManager<Employee, Long> {
                 SELECT e.id
                      , e.name
                      , c.name AS "city.name"
-                     , e.department_id
+                     , e.department_id -- Expression: AS "department" is not supported
                      , d.name AS "department.name"
                      , e.contract_day
                      , r.name AS "city.country.name"
