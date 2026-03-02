@@ -13,7 +13,6 @@ public class EmployeeDao extends GenericCrudManager<Employee, Long> {
 
     final static DynamicJdbcMapper<Employee> EMPLOYEE_MAPPER = JdbcMapperFactory
             .newInstance().newMapper(Employee.class);
-
     public EmployeeDao(Connection dbConnection) throws SQLException {
         super(dbConnection, Employee.class, Employee::setId);
         this.dbConnection = dbConnection;
@@ -24,11 +23,11 @@ public class EmployeeDao extends GenericCrudManager<Employee, Long> {
         var sql = """
                 SELECT e.id
                      , e.name
-                     , c.name AS city_name
+                     , c.name AS "city.name"
                      , e.department_id
-                     , d.name AS department_name
+                     , d.name AS "department.name"
                      , e.contract_day
-                     , r.name AS city_country_name
+                     , r.name AS "city.country.name"
                      , e.superior_id
                      , s.name AS superior_name
                 FROM employee e
